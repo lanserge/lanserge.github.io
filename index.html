@@ -1,0 +1,138 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Serge Rabyking — open silicon</title>
+<meta name="description" content="Open silicon, built new in the open: imaging hardware from NumPy models, raw sensor transport over HDMI, and one grammar-driven engine for the file formats every EDA tool re-implements.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Crect x='1' y='1' width='14' height='14' rx='2' fill='%2346a758'/%3E%3Ctext x='8' y='12' font-family='sans-serif' font-size='10' font-weight='bold' fill='white' text-anchor='middle'%3ES%3C/text%3E%3C/svg%3E">
+<style>
+  :root {
+    --bg: #ffffff; --fg: #1a1f24; --muted: #57606a; --line: #d0d7de;
+    --card: #f6f8fa; --accent: #46a758;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #0d1117; --fg: #e6edf3; --muted: #8b949e; --line: #30363d;
+      --card: #161b22; --accent: #3fb950;
+    }
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--fg);
+         font: 17px/1.6 -apple-system, "Segoe UI", Roboto, sans-serif; }
+  main { max-width: 44rem; margin: 0 auto; padding: 3rem 1.2rem 2rem; }
+  h1 { font-size: 2rem; margin: 0; }
+  .hero { display: flex; gap: 1.3rem; align-items: center;
+          flex-wrap: wrap; margin-bottom: 1.4rem; }
+  .portrait { width: 108px; height: 108px; border-radius: 50%;
+              object-fit: cover; border: 1px solid var(--line); }
+  .tag { font-size: 1.12rem; color: var(--muted); margin: .4rem 0 0; }
+  .speaking { border-left: 3px solid var(--accent); background: var(--card);
+              padding: .6rem 1rem; border-radius: 0 8px 8px 0;
+              margin: 1.2rem 0 0; }
+  section h2 { font-size: .8rem; text-transform: uppercase;
+               letter-spacing: .09em; color: var(--muted);
+               margin: 2.2rem 0 .8rem; }
+  .cards { display: grid; gap: .7rem; }
+  a.card { display: block; border: 1px solid var(--line); border-radius: 8px;
+           padding: .75rem 1rem; text-decoration: none; color: var(--fg);
+           background: var(--card); transition: border-color .15s; }
+  a.card:hover { border-color: var(--accent); }
+  a.card b, div.card b { display: block; }
+  a.card span, div.card span { color: var(--muted); font-size: .92rem; }
+  div.card { border: 1px solid var(--line); border-radius: 8px;
+             padding: .75rem 1rem; background: var(--card); }
+  p a, .speaking a, footer a { color: var(--accent); text-decoration: none; }
+  p a:hover, footer a:hover { text-decoration: underline; }
+  .cta { display: inline-block; background: var(--accent); color: #fff;
+         border-radius: 8px; padding: .5rem 1rem; text-decoration: none;
+         font-weight: 600; margin: .4rem .4rem 0 0; }
+  .cta.quiet { background: var(--card); color: var(--fg);
+               border: 1px solid var(--line); }
+  footer { max-width: 44rem; margin: 0 auto; padding: 1.2rem;
+           border-top: 1px solid var(--line); color: var(--muted);
+           font-size: .85rem; }
+</style>
+</head>
+<body>
+<main>
+  <div class="hero">
+    <img class="portrait" src="portrait.jpg" alt="Serge Rabyking"
+         width="108" height="108">
+    <div>
+      <h1>Serge Rabyking</h1>
+      <p class="tag">Open silicon, built new in the open: imaging
+      hardware from NumPy models, raw sensor transport over HDMI, and
+      one engine for the file formats every EDA tool re-implements.</p>
+    </div>
+  </div>
+
+  <div class="speaking"><b>Speaking at
+  <a href="https://orconf.org/">ORConf 2026</a></b> — Ghent,
+  September 11–13.</div>
+
+  <section>
+    <h2>Building</h2>
+    <div class="cards">
+      <a class="card" href="https://github.com/lanserge/np2hw">
+        <b>np2hw</b>
+        <span>NumPy image-processing models compiled to synthesisable,
+        readable Verilog — held bit-exact against the model by an
+        example suite that proves every capability. Ships as a FuseSoC
+        generator: an SoC names a model, and the core is generated
+        inside that project's own build.</span></a>
+      <a class="card" href="https://bayerlink.org">
+        <b>bayerlink</b>
+        <span>Raw sensor data over any HDMI/DVI link: a self-describing
+        protocol with conformance vectors, and tooling that closes the
+        loop on a $10 capture stick.</span></a>
+      <a class="card" href="https://github.com/edacommons/rawast">
+        <b>rawast</b>
+        <span>One bidirectional, grammar-driven engine for the file
+        formats every EDA tool re-implements: GDSII, LEF/DEF, Tcl,
+        SystemVerilog. Grammars are data; the PoC parses 100% of a
+        3,132-file production corpus.</span></a>
+      <div class="card">
+        <b>Setun-HDL</b>
+        <span>The Setun-1958 — history's only production ternary
+        computer — reimplemented in Amaranth from historical Soviet
+        sources: CPU, ternary ALU, full toolchain, verified on a Tang
+        Nano 9K. A book is in preparation; the source opens with
+        it.</span></div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Background</h2>
+    <p>Thirty-plus years of software coupled tightly to hardware —
+    image processing, embedded systems, telephony, hardware products.
+    Twelve years at Apical (acquired by Arm) working on image signal
+    processing IP that shipped in production cameras — patent
+    <a href="https://patents.google.com/patent/US10063787B2">US10063787B2</a>.
+    At Apical I also built an image-pipeline compiler turning graphical
+    models into C.</p>
+    <p>Doctoral research in logic optimisation (SAT) at Loughborough
+    University; applied mathematics at MIPT. Founded and ran a hardware
+    product company (2017–2023), designing and manufacturing its
+    electronics and firmware. Merged upstream patches in open EDA
+    tools.</p>
+  </section>
+
+  <section>
+    <h2>Working with me</h2>
+    <p>Consulting — ISP bring-up, imaging pipelines, EDA tooling — and
+    sponsorship that funds named capability targets: the work lands
+    open, with your name on the release.</p>
+    <a class="cta" href="https://github.com/sponsors/lanserge">Sponsor</a>
+    <a class="cta quiet" href="mailto:s.rabykin@gmail.com">s.rabykin@gmail.com</a>
+  </section>
+</main>
+
+<footer>
+  <a href="https://github.com/lanserge">GitHub</a> ·
+  <a href="https://www.linkedin.com/in/serge-rabyking-b556ab89">LinkedIn</a> ·
+  <a href="https://bayerlink.org">bayerlink.org</a> ·
+  <a href="mailto:s.rabykin@gmail.com">s.rabykin@gmail.com</a>
+</footer>
+</body>
+</html>
